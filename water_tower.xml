@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<FSData version="9.0">
+	<!--SceneryObject name: Water_Tower_FR-->
+	<SceneryObject lat="-39.000000" lon="-40.000000" alt="0.00000000000000" pitch="0.000068" bank="-0.000068" heading="-179.999991" imageComplexity="VERY_SPARSE" altitudeIsAgl="TRUE" snapToGround="TRUE" snapToNormal="FALSE">
+		<LibraryObject name="{93EE3F27-3429-4CC7-A9CC-0FB5ED33AFC2}" scale="4.000000"/>
+	</SceneryObject>
+	<!--SceneryObject name: Water_Tower_FR-->
+	<SceneryObject lat="40.000000" lon="39.000000" alt="0.00000000000000" pitch="0.000068" bank="-0.000068" heading="-179.999991" imageComplexity="VERY_SPARSE" altitudeIsAgl="TRUE" snapToGround="TRUE" snapToNormal="FALSE">
+		<LibraryObject name="{93EE3F27-3429-4CC7-A9CC-0FB5ED33AFC2}" scale="2.000000"/>
+	</SceneryObject>
+</FSData>
