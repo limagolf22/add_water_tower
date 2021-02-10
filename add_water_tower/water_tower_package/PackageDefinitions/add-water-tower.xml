@@ -1,0 +1,31 @@
+<AssetPackage Name="add-water-tower" Version="0.1.0">
+	<ItemSettings>
+		<ContentType>SCENERY</ContentType>
+		<Title>add_water_tower</Title>
+		<Manufacturer>LimaGolf22</Manufacturer>
+		<Creator>LimaGolf22</Creator>
+	</ItemSettings>
+	<Flags>
+		<VisibleInStore>false</VisibleInStore>
+		<CanBeReferenced>false</CanBeReferenced>
+	</Flags>
+	<AssetGroups>
+		<AssetGroup Name="ContentInfo">
+			<Type>ContentInfo</Type>
+			<Flags>
+				<FSXCompatibility>false</FSXCompatibility>
+			</Flags>
+			<AssetDir>PackageDefinitions\add-water-tower\ContentInfo</AssetDir>
+			<OutputDir>ContentInfo\add-water-tower\</OutputDir>
+		</AssetGroup>
+		<AssetGroup Name="water-tower-asset">
+			<Type>BGL</Type>
+			<Flags>
+				<FSXCompatibility>false</FSXCompatibility>
+			</Flags>
+			<AssetDir>source\</AssetDir>
+			<OutputDir>scenery\</OutputDir>
+		</AssetGroup>
+	</AssetGroups>
+</AssetPackage>
+

@@ -1,0 +1,37 @@
+{
+  "validation": {
+    "package_path": "C:\\Users\\liam\\Desktop\\projet_chat_eau\\add_water_tower\\water_tower_package\\Packages\\add_water_tower",
+    "validation_time": "Wed Feb 10 10:48:26 2021",
+    "validation_msecs": 0,
+    "validation_result": "failed"
+  },
+  "meta": {
+    "valid": false,
+    "error_messages": [
+      "Invalid Package Name 'add_water_tower', package name should be in the form 'aaa-bbb-...-xxx' and only contain lower case letters or digits"
+    ],
+    "warning_messages": []
+  },
+  "manifest": {
+    "valid": true,
+    "package_title": "add_water_tower",
+    "package_content_type": "SCENERY",
+    "package_version": "0.1.0",
+    "package_minimum_game_version": "1.12.13",
+    "error_messages": [],
+    "warning_messages": []
+  },
+  "layout": {
+    "valid": true,
+    "num_directories": 0,
+    "num_files": 2,
+    "invalid_paths": [],
+    "missing_directories": [],
+    "missing_files": [],
+    "wrong_size_files": [],
+    "duplicated_paths": [],
+    "mismatched_paths": [],
+    "error_messages": [],
+    "warning_messages": []
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "dependencies": [],
+  "content_type": "SCENERY",
+  "title": "add_water_tower",
+  "manufacturer": "LimaGolf22",
+  "creator": "LimaGolf22",
+  "package_version": "0.1.0",
+  "minimum_game_version": "1.12.13",
+  "release_notes": {
+    "neutral": {
+      "LastUpdate": "",
+      "OlderHistory": ""
+    }
+  }
+}

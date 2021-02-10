@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<FSData version="9.0">
+	<!--SceneryObject name: Water_Tower_FR-->
+	<SceneryObject lat="43.625401" lon="4.003827" alt="0.00000000000000" pitch="0.000068" bank="-0.000068" heading="-179.999991" imageComplexity="VERY_SPARSE" altitudeIsAgl="TRUE" snapToGround="TRUE" snapToNormal="FALSE">
+		<LibraryObject name="{93EE3F27-3429-4CC7-A9CC-0FB5ED33AFC2}" scale="1.000000"/>
+	</SceneryObject>
+	<!--SceneryObject name: Water_Tower_FR-->
+	<SceneryObject lat="43.680000" lon="3.981000" alt="0.00000000000000" pitch="0.000068" bank="-0.000068" heading="-179.999991" imageComplexity="VERY_SPARSE" altitudeIsAgl="TRUE" snapToGround="TRUE" snapToNormal="FALSE">
+		<LibraryObject name="{93EE3F27-3429-4CC7-A9CC-0FB5ED33AFC2}" scale="1.000000"/>
+	</SceneryObject>
+	<!--SceneryObject name: Water_Tower_FR-->
+	<SceneryObject lat="43.585102" lon="3.915944" alt="0.00000000000000" pitch="0.000068" bank="-0.000068" heading="-179.999991" imageComplexity="VERY_SPARSE" altitudeIsAgl="TRUE" snapToGround="TRUE" snapToNormal="FALSE">
+		<LibraryObject name="{93EE3F27-3429-4CC7-A9CC-0FB5ED33AFC2}" scale="0.800000"/>
+	</SceneryObject>
+	<!--SceneryObject name: Water_Tower_FR-->
+	<SceneryObject lat="43.633244" lon="3.934368" alt="0.00000000000000" pitch="0.000068" bank="-0.000068" heading="-179.999991" imageComplexity="VERY_SPARSE" altitudeIsAgl="TRUE" snapToGround="TRUE" snapToNormal="FALSE">
+		<LibraryObject name="{93EE3F27-3429-4CC7-A9CC-0FB5ED33AFC2}" scale="0.600000"/>
+	</SceneryObject>
+</FSData>
