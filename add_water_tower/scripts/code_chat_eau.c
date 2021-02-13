@@ -10,7 +10,7 @@ typedef struct {
 char filename_r[]="../list_water_tower.csv";
 char filename_w[]="../water_tower_package/source/water_tower.xml";
 
-char buffer[200];
+char buffer[250];
 
 float get_lat(char coord[]);
 float get_lon(char coord[]);
@@ -36,17 +36,32 @@ int main() {
     int is_deg=0;
     char coord_lat[50];
     char coord_lon[50];
-    printf("did you use degrees to represent your coordinates ?(y/n) : ");
-    if (getchar()=='y') {
-        is_deg=1;      
-    }
-
     int i=1;
-    while (fgets(buffer,200,file_r)!=NULL) {
+    while (fgets(buffer,200,file_r)!=NULL) {  //200 char max per line
         water_tower.id[0]='\0';
         water_tower.lat=0.0;
         water_tower.lon=0.0;
         water_tower.ratio=1.0;
+        int check_confo=1;
+        int k=0,check_item=0;
+        while(buffer[k]!='\0'){
+            if (check_item && (buffer[k]>'A') && (buffer[k]<'Z')) {
+	            is_deg=1;		
+	        }
+            if (buffer[k]==';') {
+                check_confo=0;
+                check_item=1;
+            }
+
+            if (buffer[k]==',') {
+                buffer[k]='.';
+            }
+            k++;
+        }
+        if (check_confo) {
+            printf("syntax error, check the .csv file\n");
+            continue;
+        }
         if (is_deg) {
             if (sscanf(buffer,"%[^;];%[^;];%[^;];%f",water_tower.id,coord_lat,coord_lon,&(water_tower.ratio))!=4) {
                 printf("water_tower %i is not complete\n",i);
@@ -55,27 +70,13 @@ int main() {
             water_tower.lon=get_lon(coord_lon);
         }
         else {
-            int check_confo=1;
-            int k=0;
-            while(buffer[k]!='\0'){
-                if (buffer[k]==';') {
-                    check_confo=0;
-                }
-                if (buffer[k]==',') {
-                    buffer[k]='.';
-                }
-                k++;
-            }
-            if (check_confo) {
-                printf("syntax error, check the .csv file\n");
-                return 1;
-            }
             if (sscanf(buffer,"%[^;];%f;%f;%f",water_tower.id,&(water_tower.lat),&(water_tower.lon),&(water_tower.ratio))!=4) {
                 printf("water_tower %i is not complete\n",i);
-            };
+            };	    
         }
+
         fprintf(file_w,"\n\t<!--SceneryObject name: Water_Tower_FR-->\n\t<SceneryObject lat=\"%f\" lon=\"%f\" alt=\"0.00000000000000\" pitch=\"0.000068\" bank=\"-0.000068\" heading=\"-179.999991\" imageComplexity=\"VERY_SPARSE\" altitudeIsAgl=\"TRUE\" snapToGround=\"TRUE\" snapToNormal=\"FALSE\">\n\t\t<LibraryObject name=\"{93EE3F27-3429-4CC7-A9CC-0FB5ED33AFC2}\" scale=\"%f\"/>\n\t</SceneryObject>",water_tower.lat,water_tower.lon,water_tower.ratio);    
-        //printf("loop %i ends\n",i);
+     //   printf("loop %i ends, is_deg: %i\n",i,is_deg);
         i++;
     }
 
@@ -89,10 +90,11 @@ int main() {
 }
 
 float get_lat(char coord[]) {
-    int a,b,c;
+    float a,b,c;
     char d;
-    sscanf(coord,"%i%*[^0-9]%i%*[^0-9]%i%*[^A-Z]%c",&a,&b,&c,&d);
-   // printf("%i %i %i %c\n",a,b,c,d);
+    sscanf(coord,"%f%*[^0-9]%f%*[^0-9]%f%*[^A-Z]%c",&a,&b,&c,&d);
+    //printf("%f %f %f %c\n",a,b,c,d);
+    float res=(a+b/60+c/3600);
     if (d=='N') {
         return (a+b/60+c/3600);
     }
@@ -102,9 +104,9 @@ float get_lat(char coord[]) {
 }
 
 float get_lon(char coord[]) {
-    int a,b,c;
+    float a,b,c;
     char d;
-    sscanf(coord,"%i%*[^0-9]%i%*[^0-9]%i%*[^A-Z]%c",&a,&b,&c,&d);
+    sscanf(coord,"%f%*[^0-9]%f%*[^0-9]%f%*[^A-Z]%c",&a,&b,&c,&d);
   //  printf("%i %i %i %c\n",a,b,c,d);
     if (d=='E') {
         return (a+b/60+c/3600);
