@@ -116,4 +116,3 @@ float get_lon(char coord[]) {
     }   
 }
 
-  
