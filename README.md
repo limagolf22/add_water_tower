@@ -7,7 +7,7 @@
   2. Launch the file exec.bat in add_water_tower folder.
   3. Wait about 30 seconds so that the bgl compiler achieve its work.
   4. Close the terminal using any keystroke.
-  5. Fly with one of the best landmark a VFR pilot could have !
+  5. Fly with one of the best landmark a VFR pilot can have !
   
   
 **Installation process :**
