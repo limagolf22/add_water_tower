@@ -2,7 +2,7 @@
 *plug-in supposed to allow you to put water towers in FS2020 easily at the location that you want !* 
 
 
-To get water towers that you want in your scenery, you just have to :
+**To get water towers that you want in your scenery, you just have to :**
   1. Set its name (optional), its coordinates and its a size ratio in the file nammed list_water_tower.csv located in the add_water_tower folder.
   2. Launch the file exec.bat in add_water_tower folder.
   3. Wait about 30 seconds so that the bgl compiler achieve its work.
