@@ -11,6 +11,7 @@ To get water towers that you want in your scenery, you just have to :
   
   
 Installation process :
+
   Just copy the two folders (add_water_tower and water_tower_scenery) in your Community folder (where FS2020 has been installed in your computer). The SDK is not
   necessary.
 
