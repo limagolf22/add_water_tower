@@ -1,5 +1,5 @@
 # add_water_tower
-plug-in supposed to allow you to put water towers in FS2020 easily at the location that you want ! 
+*plug-in supposed to allow you to put water towers in FS2020 easily at the location that you want !* 
 
 
 To get water towers that you want in your scenery, you just have to :
@@ -10,7 +10,7 @@ To get water towers that you want in your scenery, you just have to :
   5. Fly with one of the best landmark a VFR pilot could have !
   
   
-Installation process :
+**Installation process :**
 
   Just copy the two folders (add_water_tower and water_tower_scenery) in your Community folder (where FS2020 has been installed in your computer). The SDK is not
   necessary.
