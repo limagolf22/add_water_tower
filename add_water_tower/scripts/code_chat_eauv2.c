@@ -21,7 +21,6 @@ Parameters * param_list;
 char buffer[250];
 
 int init() {
-    param_list = calloc(1,sizeof(Parameters));
     FILE * file_params = NULL;
     file_params = fopen ("../objects.txt","r");
     if (file_params == NULL) {
@@ -30,9 +29,14 @@ int init() {
     }
 
     int i_conf=0;
-    while (fgets(buffer,249,file_params)!=NULL){
+    char buffer2[250];
+    char proviname[100];
+    while (fgets(buffer2,249,file_params)!=NULL){
         realloc(param_list,sizeof(Parameters)*(i_conf+1));
-        sscanf(buffer,"%[^;];%[^;];%f",(param_list+i_conf)->name,(param_list+i_conf)->ref,&((param_list+i_conf)->height));
+        sscanf(buffer2,"%[^;];%[^;];%f",proviname,(param_list+i_conf)->ref,&((param_list+i_conf)->height));
+        printf("%s\n",proviname);
+        sscanf(proviname,"%s", (param_list+i_conf)->name); 
+        printf("%s\n",(param_list+i_conf)->name);
         (param_list+i_conf)->id = i_conf-1;
         i_conf++;
     }
@@ -48,6 +52,8 @@ float get_lat(char coord[]);
 float get_lon(char coord[]);
 
 int main(int argc, char *argv[]) {
+    printf("debut programme\n");
+    param_list = calloc(1,sizeof(Parameters));
     Object object;
     if (init()!=0){
         printf("erreur init\n");
@@ -121,14 +127,13 @@ int main(int argc, char *argv[]) {
                     printf("object %i is not complete\n",i);
                 };	    
             }
-
-        fprintf(file_w,"\n\t<!--SceneryObject name: %s-->\n\t<SceneryObject lat=\"%f\" lon=\"%f\" alt=\"0.00000000000000\" pitch=\"0.000000\" bank=\"0.000000\" heading=\"-180.00\" imageComplexity=\"VERY_SPARSE\" altitudeIsAgl=\"TRUE\" snapToGround=\"TRUE\" snapToNormal=\"FALSE\">\n\t\t<LibraryObject name=\"{%s}\" scale=\"%f\"/>\n\t</SceneryObject>"
-        ,(param_list+object.id+1)->name
-        ,object.lat
-        ,object.lon
-        ,(param_list+object.id+1)->ref
-        ,object.height/((param_list+object.id+1)->height));    
-         // printf("loop %i ends, is_deg: %i\n",i,is_deg);
+            fprintf(file_w,"\n\t<!--SceneryObject name: %s -->\n\t<SceneryObject lat=\"%f\" lon=\"%f\" alt=\"0.00000000000000\" pitch=\"0.000000\" bank=\"0.000000\" heading=\"-180.00\" imageComplexity=\"VERY_SPARSE\" altitudeIsAgl=\"TRUE\" snapToGround=\"TRUE\" snapToNormal=\"FALSE\">\n\t\t<LibraryObject name=\"{%s}\" scale=\"%f\"/>\n\t</SceneryObject>"
+            ,(param_list+object.id+1)->name
+            ,object.lat
+            ,object.lon
+            ,(param_list+object.id+1)->ref
+            ,object.height/((param_list+object.id+1)->height));    
+            printf("loop %i ends, is_deg: %i, name is %s \n",i,is_deg,(param_list+object.id+1)->name);
             i++;
         }
 
@@ -169,4 +174,3 @@ float get_lon(char coord[]) {
         return -(a+b/60+c/3600);
     }   
 }
-
