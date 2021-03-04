@@ -1,28 +1,58 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 typedef struct {
     int id;
-    char  name[50];
+    char name[50];
     float lat;
     float lon;
     float height;
 } Object;
 
-char * object_names[]={"Water_Tower_FR"};
-char * object_ids[]={"93EE3F27-3429-4CC7-A9CC-0FB5ED33AFC2"};
-float object_heights[]={15.0};
+typedef struct {
+    int id;
+    char name[100];
+    char ref[100];
+    float height;
+} Parameters;
 
+Parameters * param_list;
+
+char buffer[250];
+
+int init() {
+    param_list = calloc(1,sizeof(Parameters));
+    FILE * file_params = NULL;
+    file_params = fopen ("../objects.txt","r");
+    if (file_params == NULL) {
+        printf("error when object list file is read\n");        
+        return(1);
+    }
+
+    int i_conf=0;
+    while (fgets(buffer,249,file_params)!=NULL){
+        realloc(param_list,sizeof(Parameters)*(i_conf+1));
+        sscanf(buffer,"%[^;];%[^;];%f",(param_list+i_conf)->name,(param_list+i_conf)->ref,&((param_list+i_conf)->height));
+        (param_list+i_conf)->id = i_conf-1;
+        i_conf++;
+    }
+
+    fclose(file_params);
+    return(0);
+}
 //char filename_r[];
 char filename_w[]="../water_tower_package/source/water_tower.xml";
 
-char buffer[250];
 
 float get_lat(char coord[]);
 float get_lon(char coord[]);
 
 int main(int argc, char *argv[]) {
     Object object;
-
+    if (init()!=0){
+        printf("erreur init\n");
+        return 1;
+    }
     FILE * file_w = NULL;
     if (argc<=1) {
         printf("at least 1 .csv file is necessary");
@@ -92,7 +122,12 @@ int main(int argc, char *argv[]) {
                 };	    
             }
 
-        fprintf(file_w,"\n\t<!--SceneryObject name: %s-->\n\t<SceneryObject lat=\"%f\" lon=\"%f\" alt=\"0.00000000000000\" pitch=\"0.000000\" bank=\"0.000000\" heading=\"-180.00\" imageComplexity=\"VERY_SPARSE\" altitudeIsAgl=\"TRUE\" snapToGround=\"TRUE\" snapToNormal=\"FALSE\">\n\t\t<LibraryObject name=\"{%s}\" scale=\"%f\"/>\n\t</SceneryObject>",object_names[object.id],object.lat,object.lon,object_ids[object.id],object.height/object_heights[object.id]);    
+        fprintf(file_w,"\n\t<!--SceneryObject name: %s-->\n\t<SceneryObject lat=\"%f\" lon=\"%f\" alt=\"0.00000000000000\" pitch=\"0.000000\" bank=\"0.000000\" heading=\"-180.00\" imageComplexity=\"VERY_SPARSE\" altitudeIsAgl=\"TRUE\" snapToGround=\"TRUE\" snapToNormal=\"FALSE\">\n\t\t<LibraryObject name=\"{%s}\" scale=\"%f\"/>\n\t</SceneryObject>"
+        ,(param_list+object.id+1)->name
+        ,object.lat
+        ,object.lon
+        ,(param_list+object.id+1)->ref
+        ,object.height/((param_list+object.id+1)->height));    
          // printf("loop %i ends, is_deg: %i\n",i,is_deg);
             i++;
         }
@@ -102,6 +137,7 @@ int main(int argc, char *argv[]) {
     
     fprintf(file_w,"\n</FSData>");
     fclose(file_w);
+    free(param_list);
     printf("import done ! Just wait a few seconds that the compilation process starts...\n");
     return 0;
     
