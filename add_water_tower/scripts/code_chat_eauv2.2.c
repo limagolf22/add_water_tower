@@ -64,7 +64,6 @@ int main(int argc, char *argv[]) {
         i_conf++;
     }
     fclose(file_params);
-
     FILE * file_w = NULL;
     if (argc<=1) {
         printf("at least 1 .csv file is necessary");
@@ -141,7 +140,7 @@ int main(int argc, char *argv[]) {
             ,object.lon
             ,param_list[object.id].ref
             ,object.height/(param_list[object.id].height));    
-            printf("loop %i ends, is_deg: %i, name is %s \n",i,is_deg,param_list[object.id].name);
+ //           printf("loop %i ends, is_deg: %i, name is %s \n",i,is_deg,param_list[object.id].name);
             i++;
         }
 
@@ -150,7 +149,6 @@ int main(int argc, char *argv[]) {
     
     fprintf(file_w,"\n</FSData>");
     fclose(file_w);
-    free(param_list);
     printf("import done ! Just wait a few seconds that the compilation process starts...\n");
     return 0;
     
